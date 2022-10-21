@@ -5,5 +5,6 @@
   "requirements": ["pycomfoconnect==0.4"],
   "codeowners": ["@michaelarnauts"],
   "iot_class": "local_push",
-  "loggers": ["pycomfoconnect"]
+  "loggers": ["pycomfoconnect"],
+  "version": "1.0.0"
 }
