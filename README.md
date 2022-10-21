@@ -1,3 +1,3 @@
-# Zehnder ComfoAir Q Ext. for Home Assistant
+# Zehnder ComfoConnect for Home Assistant
 
 ## Installation
