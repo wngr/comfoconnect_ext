@@ -143,7 +143,7 @@ class ComfoConnectTempProfile(SelectEntity):
         _LOGGER.debug(
             "Handle update for temp profile state(%d): %s", SENSOR_PROFILE_TEMPERATURE, value
         )
-        self.current_mode = MODE_MAPPING[value]
+        self.current_mode = PROFILE_MAPPING[value]
         self.schedule_update_ha_state()
 
     @property
@@ -155,5 +155,5 @@ class ComfoConnectTempProfile(SelectEntity):
         """Set temp profile ."""
         _LOGGER.debug("Changing temp profile to %s", mode)
 
-        cmd = CMD_MAPPING[mode]
+        cmd = TEMP_CMD_MAPPING[mode]
         self._ccb.comfoconnect.cmd_rmi_request(cmd)
