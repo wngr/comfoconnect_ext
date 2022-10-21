@@ -38,7 +38,7 @@ def setup_platform(
     add_entities: AddEntitiesCallback,
     discovery_info: DiscoveryInfoType | None = None,
 ) -> None:
-    """Set up the ComfoConnect fan platform."""
+    """Set up the ComfoConnect bypass."""
     ccb = hass.data[DOMAIN]
 
     add_entities([ComfoConnectByPass(ccb)], True)
@@ -49,14 +49,13 @@ class ComfoConnectByPass(SelectEntity):
 
     _attr_icon = "mdi:air-conditioner"
     _attr_should_poll = False
-    #_attr_supported_features = FanEntityFeature.SET_SPEED
     _attr_options = ['auto', 'on', 'off']
     current_mode = None
 
     def __init__(self, ccb: ComfoConnectBridge) -> None:
-        """Initialize the ComfoConnect fan."""
+        """Initialize the ComfoConnect bypass."""
         self._ccb = ccb
-        self._attr_name = ccb.name
+        self._attr_name = ccb.name + "bypass"
         self._attr_unique_id = ccb.unique_id
 
     async def async_added_to_hass(self) -> None:
@@ -87,49 +86,8 @@ class ComfoConnectByPass(SelectEntity):
         return self.current_mode
 
     def select_option(self, mode: str) -> None:
-        """Set fan speed percentage."""
+        """Set bypass mode."""
         _LOGGER.debug("Changing bypass mode to %s", mode)
 
         cmd = CMD_MAPPING[mode]
         self._ccb.comfoconnect.cmd_rmi_request(cmd)
-
-#    @property
-#    def percentage(self) -> int | None:
-#        """Return the current speed percentage."""
-#        if self.current_speed is None:
-#            return None
-#        return ranged_value_to_percentage(SPEED_RANGE, self.current_speed)
-#
-#    @property
-#    def speed_count(self) -> int:
-#        """Return the number of speeds the fan supports."""
-#        return int_states_in_range(SPEED_RANGE)
-#
-#    def turn_on(
-#        self,
-#        percentage: int | None = None,
-#        preset_mode: str | None = None,
-#        **kwargs: Any,
-#    ) -> None:
-#        """Turn on the fan."""
-#        if percentage is None:
-#            self.set_percentage(1)  # Set fan speed to low
-#        else:
-#            self.set_percentage(percentage)
-#
-#    def turn_off(self, **kwargs: Any) -> None:
-#        """Turn off the fan (to away)."""
-#        self.set_percentage(0)
-#
-#    def set_percentage(self, percentage: int) -> None:
-#        """Set fan speed percentage."""
-#        _LOGGER.debug("Changing fan speed percentage to %s", percentage)
-#
-#        if percentage == 0:
-#            cmd = CMD_FAN_MODE_AWAY
-#        else:
-#            speed = math.ceil(percentage_to_ranged_value(SPEED_RANGE, percentage))
-#            cmd = CMD_MAPPING[speed]
-#
-#        self._ccb.comfoconnect.cmd_rmi_request(cmd)
-#
