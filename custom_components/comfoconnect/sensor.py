@@ -231,6 +231,8 @@ SENSOR_TYPES = (
         icon="mdi:camera-iris",
         sensor_id=SENSOR_BYPASS_STATE,
     ),
+    # TODO: Convert to enum
+    # (`00` = auto, `01` = activated, `02` = deactivated)
     ComfoconnectSensorEntityDescription(
         key=ATTR_BYPASS_ACTIVATION_STATE,
         state_class=SensorStateClass.MEASUREMENT,
