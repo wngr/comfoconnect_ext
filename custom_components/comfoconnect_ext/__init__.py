@@ -20,9 +20,9 @@ from homeassistant.helpers.typing import ConfigType
 
 _LOGGER = logging.getLogger(__name__)
 
-DOMAIN = "comfoconnect"
+DOMAIN = "comfoconnect_ext"
 
-SIGNAL_COMFOCONNECT_UPDATE_RECEIVED = "comfoconnect_update_received_{}"
+SIGNAL_COMFOCONNECT_UPDATE_RECEIVED = "comfoconnect_ext_update_received_{}"
 
 CONF_USER_AGENT = "user_agent"
 
