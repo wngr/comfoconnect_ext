@@ -1,0 +1,1 @@
+DOMAIN = "comfoconnect_ext"
