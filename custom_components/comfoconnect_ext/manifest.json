@@ -1,5 +1,5 @@
 {
-  "domain": "comfoconnect-ext",
+  "domain": "comfoconnect_ext",
   "name": "Zehnder ComfoAir Q Ext.",
   "documentation": "https://www.home-assistant.io/integrations/comfoconnect",
   "requirements": ["pycomfoconnect==0.4"],
