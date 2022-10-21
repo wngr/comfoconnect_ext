@@ -6,6 +6,7 @@ import logging
 
 from pycomfoconnect import (
     SENSOR_BYPASS_STATE,
+    SENSOR_BYPASS_ACTIVATIONSTATE,
     SENSOR_CURRENT_RMOT,
     SENSOR_DAYS_TO_REPLACE_FILTER,
     SENSOR_FAN_EXHAUST_DUTY,
@@ -57,6 +58,7 @@ from . import DOMAIN, SIGNAL_COMFOCONNECT_UPDATE_RECEIVED, ComfoConnectBridge
 ATTR_AIR_FLOW_EXHAUST = "air_flow_exhaust"
 ATTR_AIR_FLOW_SUPPLY = "air_flow_supply"
 ATTR_BYPASS_STATE = "bypass_state"
+ATTR_BYPASS_ACTIVATION_STATE = "bypass_activation_state"
 ATTR_CURRENT_HUMIDITY = "current_humidity"
 ATTR_CURRENT_RMOT = "current_rmot"
 ATTR_CURRENT_TEMPERATURE = "current_temperature"
@@ -228,6 +230,14 @@ SENSOR_TYPES = (
         native_unit_of_measurement=PERCENTAGE,
         icon="mdi:camera-iris",
         sensor_id=SENSOR_BYPASS_STATE,
+    ),
+    ComfoconnectSensorEntityDescription(
+        key=ATTR_BYPASS_ACTIVATION_STATE,
+        state_class=SensorStateClass.MEASUREMENT,
+        name="Bypass activation state",
+        native_unit_of_measurement=PERCENTAGE,
+        icon="mdi:camera-iris",
+        sensor_id=SENSOR_BYPASS_ACTIVATIONSTATE,
     ),
     ComfoconnectSensorEntityDescription(
         key=ATTR_DAYS_TO_REPLACE_FILTER,
