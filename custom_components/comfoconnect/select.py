@@ -6,7 +6,7 @@ from pycomfoconnect import (
     SENSOR_BYPASS_ACTIVATIONSTATE
 )
 
-from homeassistant.components.fan import SelectEntity
+from homeassistant.components.select import SelectEntity
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.dispatcher import async_dispatcher_connect
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
