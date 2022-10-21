@@ -27,6 +27,7 @@ from pycomfoconnect import (
     SENSOR_TEMPERATURE_EXTRACT,
     SENSOR_TEMPERATURE_OUTDOOR,
     SENSOR_TEMPERATURE_SUPPLY,
+    SENSOR_PROFILE_TEMPERATURE
 )
 import voluptuous as vol
 
@@ -77,6 +78,7 @@ ATTR_SUPPLY_FAN_DUTY = "supply_fan_duty"
 ATTR_SUPPLY_FAN_SPEED = "supply_fan_speed"
 ATTR_SUPPLY_HUMIDITY = "supply_humidity"
 ATTR_SUPPLY_TEMPERATURE = "supply_temperature"
+ATTR_TEMP_PROFILE = "temp_profile"
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -240,6 +242,16 @@ SENSOR_TYPES = (
         native_unit_of_measurement=PERCENTAGE,
         icon="mdi:camera-iris",
         sensor_id=SENSOR_BYPASS_ACTIVATIONSTATE,
+    ),
+    # TODO: Convert to enum
+    # (`00` = normal, `01` = cold, `02` = warm)
+    ComfoconnectSensorEntityDescription(
+        key=ATTR_TEMP_PROFILE,
+        state_class=SensorStateClass.MEASUREMENT,
+        name="Temperature profile",
+        native_unit_of_measurement=PERCENTAGE,
+        icon="mdi:camera-iris",
+        sensor_id=SENSOR_PROFILE_TEMPERATURE,
     ),
     ComfoconnectSensorEntityDescription(
         key=ATTR_DAYS_TO_REPLACE_FILTER,

@@ -122,7 +122,7 @@ class ComfoConnectTempProfile(SelectEntity):
         self._ccb = ccb
         self._attr_name = ccb.name + "tempProfile"
         # todo should be unique?
-        self._attr_unique_id = ccb.unique_id
+        self._attr_unique_id = ccb.unique_id + "temp"
 
     async def async_added_to_hass(self) -> None:
         """Register for sensor updates."""
